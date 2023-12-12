@@ -3,7 +3,8 @@
 int main() {
   // chapter 1
   //longest_line();
-  eighty_plus();
+  //eighty_plus();
+  trimmedLine();
 
   return 0;
 }

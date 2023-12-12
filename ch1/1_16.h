@@ -9,6 +9,12 @@ int getLine(char s[], int lim) {
     s[i] = c;
   }
 
+  if (c == '\n') {
+    s[i] = c;
+    ++i;
+  }
+  s[i] = '\0';
+
   return i;
 }
 
@@ -37,6 +43,7 @@ void longest_line() {
   }
 
   if (max > 0){
-    printf("%s %d", longest, max);
+    printf("longest line: %s", longest);
+    printf("length: %d\n", max);
   }
 }
