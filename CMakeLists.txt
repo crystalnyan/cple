@@ -7,4 +7,5 @@ add_executable(cple main.c
         ch1/ch1.h
         ch1/1_16.h
         ch1/1_17.h
-        ch1/1_18.h)
+        ch1/1_18.h
+        ch1/1_19.h)
