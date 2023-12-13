@@ -1,5 +1,5 @@
-#ifndef CPLE_CH1_H
-#define CPLE_CH1_H
+#ifndef CHIPOTLE_CH1_H
+#define CHIPOTLE_CH1_H
 
 int getLine(char s[], int lim);
 void copy(char to[], char from[]);
