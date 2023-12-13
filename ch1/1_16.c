@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "ch1.h"
+
 #define MAXLINE 1000
 
 int getLine(char s[], int lim) {
@@ -26,7 +28,6 @@ void copy(char to[], char from[]) {
     i++;
   }
 }
-
 
 void longest_line() {
   int len;

@@ -1,4 +1,12 @@
-#include "1_16.h"
-#include "1_17.h"
-#include "1_18.h"
-#include "1_19.h"
+#ifndef CPLE_CH1_H
+#define CPLE_CH1_H
+
+int getLine(char s[], int lim);
+void copy(char to[], char from[]);
+
+void longest_line();
+void eighty_plus();
+void trimmedLine();
+void reversedLine();
+
+#endif

@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/cple.dir/main.c.o CMakeFiles/cple.dir/ch1/1_16.c.o CMakeFiles/cple.dir/ch1/1_17.c.o CMakeFiles/cple.dir/ch1/1_18.c.o CMakeFiles/cple.dir/ch1/1_19.c.o -o cple 

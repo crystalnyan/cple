@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "ch1.h"
+
 #define MAXLINE 1000
 
 void reverseLine(char line[], int length) {

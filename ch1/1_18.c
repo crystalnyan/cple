@@ -1,13 +1,13 @@
 #include <stdio.h>
 
+#include "ch1.h"
+
 #define MAXLINE 1000
 
 int trimLine(char line[], int length) {
-  int i = length;
-
-  for (int j = i - 2; j >= 0; j--) {
+  for (int j = length - 2; j >= 0; j--) {
     if (line[j] == '\t' || line[j] == ' ') {
-        i--;
+        length--;
         line[j] = '\n';
         line[j+1] = '\0';
     } else {
@@ -15,7 +15,7 @@ int trimLine(char line[], int length) {
     }
   }
 
-  return i;
+  return length;
 }
 
 int getTrimmedLine(char s[], int lim) {

@@ -1,0 +1,3 @@
+/home/crystal/cple/CMakeFiles/cple.dir
+/home/crystal/cple/CMakeFiles/edit_cache.dir
+/home/crystal/cple/CMakeFiles/rebuild_cache.dir
