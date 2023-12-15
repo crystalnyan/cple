@@ -6,7 +6,8 @@ int main() {
   // eighty_plus();
   // trimmedLine();
   // reversedLine();
-   detab();
+  // detab();
+   entab();
 
   return 0;
 }

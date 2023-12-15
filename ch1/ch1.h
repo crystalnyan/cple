@@ -11,5 +11,6 @@ void eighty_plus();
 void trimmedLine();
 void reversedLine();
 void detab();
+void entab();
 
 #endif
