@@ -4,8 +4,9 @@ int main() {
   // CHAPTER 1
   // longest_line();
   // eighty_plus();
-  // trimmedLine()
-  reversedLine();
+  // trimmedLine();
+  // reversedLine();
+   detab();
 
   return 0;
 }

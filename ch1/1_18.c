@@ -2,8 +2,6 @@
 
 #include "ch1.h"
 
-#define MAXLINE 1000
-
 int trimLine(char line[], int length) {
   for (int j = length - 2; j >= 0; j--) {
     if (line[j] == '\t' || line[j] == ' ') {
