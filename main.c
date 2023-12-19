@@ -7,7 +7,8 @@ int main() {
   // trimmedLine();
   // reversedLine();
   // detab();
-   entab();
+  // entab();
+  fold();
 
   return 0;
 }

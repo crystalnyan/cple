@@ -5,6 +5,7 @@
 
 int getLine(char s[], int lim);
 void copy(char to[], char from[]);
+int trimLine(char line[], int length);
 
 void longest_line();
 void eighty_plus();
@@ -12,5 +13,6 @@ void trimmedLine();
 void reversedLine();
 void detab();
 void entab();
+void fold();
 
 #endif
