@@ -52,28 +52,35 @@ int removeSingleLineComment(char line[]) {
   return i; // number of elements in the array after removing a comment
 }
 
-/*void append(char from[], char to[], int pos) {
+void append(char main[], char sub[], int pos) {
   int i = 0;
 
-  while (from[i] != '\0') {
-    char[]
+  int index = pos;
+  while (sub[i] != '\0') {
+    main[index] = sub[i];
+    i++;
+    index++;
   }
-}*/
+
+  main[index] = '\0';
+}
 
 void removedComments() {
   int len;
   char line[MAXLINE];
 
-  //char programResult[MAXLINE+MAXLINE];
-  //int pos = 0;
+  char programResult[MAXLINE+MAXLINE];
+  int pos = 0;
 
   while ( (len = getLine(line, MAXLINE)) > 0 ) {
-    printf("\noriginal program:\n%s", line);
+    printf("\nnew line: %s", line);
 
     int newLineLen = removeSingleLineComment(line);
-    //append(line, programResult, pos);
-    //pos += newLineLen;
+    printf("uncommented line: %s", line);
 
-    printf("\nuncommented program:\n%s", line);
+    append(programResult, line, pos);
+    pos += newLineLen;
   }
+
+  printf("\nuncommented program:\n%s", programResult);
 }
