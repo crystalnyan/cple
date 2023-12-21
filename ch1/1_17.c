@@ -2,7 +2,6 @@
 
 #include "ch1.h"
 
-#define MAXLINE 1000
 #define MINLINE 80
 
 void eighty_plus() {
