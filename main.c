@@ -8,7 +8,8 @@ int main() {
   // reversedLine();
   // detab();
   // entab();
-  fold();
+  // fold();
+   removedComments();
 
   return 0;
 }

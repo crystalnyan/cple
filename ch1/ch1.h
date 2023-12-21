@@ -14,5 +14,6 @@ void reversedLine();
 void detab();
 void entab();
 void fold();
+void removedComments();
 
 #endif
