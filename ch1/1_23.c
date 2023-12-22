@@ -16,6 +16,22 @@ int openMultilineComment = OUT;
 // we assume the program has no errors regarding unclosed comments, etc.
 // as the next exercise aims on checking that one
 
+int findOpeningMultiline(char line[]) {
+  int i = 0;
+  while (line[i] != '\0' && !openMultilineComment) {
+    if (line[i] == '/') {
+      if (line[i+1] == '*') {
+        openMultilineComment = IN;
+        break;
+      }
+    }
+
+    i++;
+  }
+
+  return i;
+}
+
 int removeSingleLineComment(char line[]) {
   int i = 0;
   while (line[i] != '\0') {
@@ -52,6 +68,92 @@ int removeSingleLineComment(char line[]) {
   return i; // number of elements in the array after removing a comment
 }
 
+// removes all lines starting /* but has no way to check for */ (closing appearing)
+int removeMultilineComment(char line[]) {
+  // index from which there is no comment
+  int startPos = 0;
+  int endPos = 0;
+
+  // find if there is opening comment (do not search if not OUT of multiline comment)
+  int i = 0;
+  while (line[i] != '\0' && !openMultilineComment) {
+    if (line[i] == '/') {
+      if (line[i+1] == '*') {
+        openMultilineComment = IN;
+        startPos = i;
+        break;
+      }
+    }
+
+    i++;
+  }
+
+  // if outside comment just return the length
+  if (!openMultilineComment) {
+    return i;
+  }
+
+  // find if there is closing comment
+  if (openMultilineComment) {
+    int j = 0;
+    while (line[j] != '\n') {
+      if (line[j] == '*') {
+        if (line[j+1] == '/') {
+          openMultilineComment = OUT;
+          endPos = j + 1;
+          break;
+        }
+      }
+
+      j++;
+    }
+  }
+
+    // if inside multiline comment and no closing was found return just a newline, and it is open since index 0
+    // "* nyanya\n"
+    if (openMultilineComment && startPos == 0) {
+      line[0] = '\n';
+      line[1] = '\0';
+      return 1;
+    }
+
+    // if found a closing comment remove it leaving the rest of the line, and it started at index 0
+    // "* lyalyalya */ int a = 1;\n"
+    if (!openMultilineComment && endPos != 0 && startPos == 0) {
+      int j = 0;
+      while (line[j] != '\0') {
+        line[j] = line[j+endPos+1];
+        j++;
+      }
+      line[j] = '\0';
+      return j;
+    }
+
+    // if not found a closing comment but a starting is, save the line before it
+    // "int a = 1; /* nyanya\n"
+    if (openMultilineComment && startPos != 0) {
+      line[startPos] = '\n';
+      line[startPos+1] = '\0';
+      return startPos + 1;
+    }
+
+    // if a multiline command is in the middle
+    // int a = 1; /* nya */ int c = 2;
+    if (!openMultilineComment && startPos != 0 &&  endPos != 0) {
+      int j = startPos;
+      int index = endPos + 1;
+      while (line[index] != 0) {
+        line[j] = line[index];
+        index++;
+        j++;
+      }
+
+      line[j] = '\0';
+
+      return j;
+    }
+}
+
 void append(char main[], char sub[], int pos) {
   int i = 0;
 
@@ -66,17 +168,19 @@ void append(char main[], char sub[], int pos) {
 }
 
 void removedComments() {
-  int len;
   char line[MAXLINE];
 
   char programResult[MAXLINE+MAXLINE];
   int pos = 0;
 
-  while ( (len = getLine(line, MAXLINE)) > 0 ) {
+  while ( getLine(line, MAXLINE) > 0 ) {
     printf("\nnew line: %s", line);
 
-    int newLineLen = removeSingleLineComment(line);
-    printf("uncommented line: %s", line);
+    removeSingleLineComment(line);
+    printf("uncommented single comments: %s", line);
+
+    int newLineLen = removeMultilineComment(line);
+    printf("uncommented multiline comments: %s", line);
 
     append(programResult, line, pos);
     pos += newLineLen;
