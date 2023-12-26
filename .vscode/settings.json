@@ -1,0 +1,4 @@
+{
+    "nixEnvSelector.suggestion": true,
+    "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix"
+}
